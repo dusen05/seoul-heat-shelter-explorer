@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Seoul Heat Shelter Explorer</title>
+
+    <!-- Leaflet 지도 라이브러리 -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css?v=b65d69fdc1">
+</head>
+
+<body>
+    <header>
+        <a class="analysis-link" href="./report.html">분석 과정 보기 <span aria-hidden="true">↗</span></a>
+        <h1>Seoul Heat Shelter Explorer</h1>
+        <p>서울시 무더위쉼터 접근성 탐색</p>
+
+        <p class="indicator-summary">
+            Gravity-based Accessibility · 무더위쉼터의 수용인원과
+            보행거리를 고려한 접근성 지표입니다.
+            점수가 높을수록 접근성이 높습니다.
+        </p>
+
+    </header>
+
+    <main>
+        <section class="map-container">
+            <div id="map"></div>
+        </section>
+
+        <aside class="info-panel">
+            <h2>격자별 접근성</h2>
+
+            <button id="back-to-map" class="back-button" style="display: none;">
+                ← 전체 지도 보기
+            </button>
+
+            <p class="description">
+                지도에서 500m 격자를 선택하면 해당 지역의
+                무더위쉼터 접근성을 확인할 수 있습니다.
+            </p>
+            
+            <div id="grid-info">
+                <p>격자를 선택해 주세요.</p>
+            </div>
+
+        </aside>
+    </main>
+
+    <footer>
+        <p>서울시 무더위쉼터 접근성 분석 | 500m Grid · Gravity-based Accessibility</p>
+    </footer>
+
+    <!-- Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- 사용자 JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
+

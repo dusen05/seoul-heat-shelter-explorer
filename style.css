@@ -1,0 +1,349 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, "Apple SD Gothic Neo", sans-serif;
+    background: #f5f6f8;
+    color: #222;
+}
+
+header {
+    padding: 24px 40px 10px;
+    background: white;
+    border-bottom: 1px solid #ddd;
+}
+
+header h1 {
+    margin: 0 0 8px;
+    font-size: 26px;
+}
+
+header p {
+    margin: 0;
+    color: #666;
+}
+
+main {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 440px;
+    gap: 20px;
+    padding: 20px;
+}
+
+.map-container {
+    min-width: 0;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+#map {
+    width: 100%;
+    height: 650px;
+}
+
+.info-panel {
+    background: white;
+    padding: 24px;
+    border-radius: 12px;
+}
+
+.info-panel h2 {
+    margin-top: 0;
+}
+
+.info-item {
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.info-label {
+    color: #777;
+    font-size: 13px;
+}
+
+.info-value {
+    margin-top: 5px;
+    font-size: 21px;
+    font-weight: bold;
+}
+
+footer {
+    padding: 20px;
+    text-align: center;
+    color: #777;
+    font-size: 12px;
+}
+
+@media (max-width: 768px) {
+    main {
+        grid-template-columns: 1fr;
+        padding: 12px;
+    }
+
+    #map {
+        height: 450px;
+    }
+}
+
+/* 접근 가능 쉼터 목록 */
+
+.facility-list {
+    max-height: 350px;
+    overflow-y: auto;
+    margin-top: 12px;
+}
+
+.facility-item {
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.facility-name {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.facility-detail {
+    font-size: 12px;
+    color: #666;
+    line-height: 1.6;
+}
+
+.data-note {
+    margin-top: 20px;
+    font-size: 11px;
+    color: #888;
+    line-height: 1.6;
+}
+
+/* 클릭 가능한 쉼터 목록 */
+
+.facility-item {
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.facility-item:hover {
+    background-color: #f0f5ff;
+}
+
+.facility-item:active {
+    background-color: #dce8ff;
+}
+
+/* 지도 범례 */
+
+.map-legend {
+    background: white;
+    padding: 14px 16px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.legend-title {
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 5px;
+}
+
+.legend-item span {
+    display: inline-block;
+    width: 18px;
+    height: 12px;
+    border: 1px solid #ddd;
+    flex-shrink: 0;
+}
+
+.legend-note {
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px solid #eee;
+    color: #666;
+    font-size: 11px;
+}
+
+/* 접근성 지표 설명 */
+
+.indicator-guide {
+    background: #f7f8fa;
+    padding: 14px;
+    border-radius: 8px;
+    margin: 18px 0;
+}
+
+.indicator-guide h3 {
+    margin: 0 0 10px;
+    font-size: 14px;
+}
+
+.indicator-guide p {
+    font-size: 12px;
+    line-height: 1.7;
+    color: #555;
+    margin: 8px 0;
+}
+
+.indicator-guide .guide-note {
+    font-size: 11px;
+    color: #777;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+    margin-top: 12px;
+}
+
+
+/* 전체 지도 복귀 버튼 */
+
+.back-button {
+    width: 100%;
+    padding: 13px 16px;
+    margin: 10px 0 20px;
+
+    background: #2166ac;
+    color: white;
+
+    border: none;
+    border-radius: 8px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.back-button:hover {
+    background: #174b80;
+}
+
+/* 접근성 지표 간단 설명 */
+.indicator-summary {
+    margin: 6px 0 18px;
+    font-size: 12px;
+    line-height: 1.6;
+    color: #777;
+}
+
+
+@media (min-width: 769px) {
+    main {
+        grid-template-columns: minmax(0, 1fr) 440px !important;
+    }
+}
+
+
+/* 팝업 박스 전체 */
+.leaflet-popup-content-wrapper {
+    border-radius: 12px;  /* 모서리 둥글기 */
+    padding: 10px;         /* 박스 안쪽 여백 */
+    max-width: 320px;     /* 최대 너비 */
+}
+
+/* 팝업 내부 콘텐츠 */
+.leaflet-popup-content {
+    margin: 12px 16px;    /* 상하 12px, 좌우 16px */
+    font-size: 14px;      /* 글자 크기 */
+    line-height: 1.5;     /* 줄 간격 */
+}
+
+/* 팝업 닫기 버튼 */
+.leaflet-popup-close-button {
+    top: 8px !important;
+    right: 8px !important;
+}
+
+/* Gravity 접근성 등급 */
+
+.gravity-level {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: 6px;
+
+    font-size: 13px;
+    font-weight: 600;
+    color: #555;
+}
+
+.gravity-dot {
+    display: inline-block;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+/* Gravity 접근성 등급 배지 */
+.gravity-badge {
+    display: inline-block;
+    padding: 5px 14px;
+    margin-top: 8px;
+
+    border: 1.5px solid;
+    border-radius: 999px;
+
+    font-size: 12px;
+    font-weight: 600;
+    color: #222;
+    text-align: center;
+}
+
+/* Gravity 제목과 점수 사이 여백 */
+.info-label {
+    margin-bottom: 8px;
+}
+
+/* 배지와 점수 배치 */
+.gravity-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 4px 0 8px;
+}
+
+/* 배지 여백 조정 */
+.gravity-row .gravity-badge {
+    margin-top: 0;
+}
+
+/* 숫자 여백 조정 */
+.gravity-row .info-value {
+    margin-top: 0;
+}
+
+/* 분석 보고서로 이동 */
+header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: 24px;
+    align-items: start;
+}
+header h1, header p { grid-column: 1; min-width: 0; }
+header h1 { grid-row: 1; }
+.analysis-link {
+    grid-column: 2; grid-row: 1 / span 3;
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    padding: 12px 18px; min-height: 44px;
+    background: #08519c; color: #fff;
+    border: 1px solid #08519c; border-radius: 8px;
+    font-size: 14px; font-weight: 600; text-decoration: none; white-space: nowrap;
+}
+.analysis-link:hover { background: #06417d; }
+.analysis-link:focus-visible { outline: 3px solid #6baed6; outline-offset: 3px; }
+@media (max-width: 600px) {
+    header { padding: 20px 16px 10px; column-gap: 12px; }
+    header h1 { font-size: 21px; overflow-wrap: anywhere; }
+    .analysis-link { padding: 10px 12px; font-size: 13px; gap: 6px; }
+}
